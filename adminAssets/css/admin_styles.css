@@ -1,0 +1,415 @@
+/*font-family: 'Lobster', cursive;
+font-family: 'Indie Flower', cursive;
+font-family: 'Srisakdi', cursive;
+font-family: 'Pacifico', cursive;
+font-family: 'Fascinate Inline', cursive;
+font-family: 'Permanent Marker', cursive;
+font-family: 'Courgette', cursive;
+font-family: 'Kaushan Script', cursive;
+font-family: 'Mansalva', cursive;
+font-family: 'Monoton', cursive;
+font-family: 'Marck Script', cursive;
+font-family: 'Fugaz One', cursive;
+font-family: 'Zilla Slab Highlight', cursive;
+font-family: 'Oleo Script', cursive;
+font-family: 'Homemade Apple', cursive;
+font-family: 'Fredericka the Great', cursive;*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+.inactiveUser{
+    background-color: #aa00004a !important;
+    pointer-events: none;
+    opacity: 0.8;
+
+}
+.inactiveUser:hover{
+    cursor: not-allowed;
+}
+
+.dropdown-item {
+    font-size: smaller;
+}
+.dropdown-item:hover,a.text-light:hover {
+    color: #000 !important;
+    text-decoration: none;
+    background-color: #e2e7ec;
+}
+
+a.text-light:hover > .fa-user-circle{
+    color: #007bff;
+}
+a.text-light:hover > .fa-globe{
+    color: #0a9b35;
+}
+a.text-light:hover > .fa-sign-out{
+    color: #dc3545;
+}
+
+#sidebarCollapse{
+    transition-property: background-color,border-radius;
+    transition-duration: 0.2s,0.2s;
+}
+
+#sidebarCollapse:hover{
+    background-color: #f7613ca8;
+    border-radius: 5px;
+}
+
+#body_id{
+	position: relative;
+	min-height: 100vh;
+	background: url("../images/adminLoginBg.gif");
+	background-size: 100%;
+	/*background-repeat: no-repeat;*/
+}
+
+#loginPageRow{
+	min-height: 90vh !important;
+}
+
+#login_overlay{
+	position: absolute;
+	height: 100vh;
+	width: 100%;
+	background-color: #0009;
+	/*opacity: 0.9;*/
+}
+
+#login_form_side_div{
+	background-color: #000;
+}
+
+#login_form_div{
+	color: black;
+	background-color: #fff;
+	opacity: 0.8;
+}
+
+#login_form_elements_div{
+	border-bottom: 2px ridge #ddd;
+}
+
+#loginForm{
+	font-weight: 700;
+}
+
+
+#admin_login_uname {
+	width: 100%;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	background-color: white;
+	background-image: url('../images/emailIcon.png');
+	background-repeat: no-repeat;
+	background-position: 5px 2px;
+	background-size: 5% 85%;
+	padding: 20px 20px 20px 20px;
+    text-align: right;
+	-webkit-transition: background-position 1s ease-in-out, padding-left 0.75s ease-in-out;
+	transition: background-position 1s ease-in-out, padding-left 0.75s ease-in-out;
+}
+
+#admin_login_pwd{
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('../images/pwdIcon.png');
+  background-position: 5px 2px;
+  background-size: 5% 85%;
+  background-repeat: no-repeat;
+  padding: 20px 20px 20px 20px;
+  text-align: right;
+  -webkit-transition: background-position 1s ease-in-out, padding-left 0.75s ease-in-out;
+  transition: background-position 1s ease-in-out, padding-left 0.75s ease-in-out;
+}
+
+/*#admin_login_uname:focus {
+  background-position: 99% 2px; 
+  padding-left: 1%;
+
+}
+#admin_login_pwd:focus {
+  background-position: 99% 2px; 
+  padding-left: 1%;
+
+}*/
+
+.bg-info-admin-contact{
+	background-color:#e0f0f2 !important
+}
+
+#modalContactForm{ 
+	background-color: black; opacity: 1 !important;
+}
+.error{
+	color: red;
+}
+
+/*=== Admin Sidebar ===*/
+
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #000;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 0px 15px;
+    /*background: #fff;*/
+    border: none;
+    border-radius: 0;
+    margin-bottom: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    height: 30px;
+}
+
+#searchContent .breadcrumb{
+    padding: 0.25rem 1rem !important;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+#admin_sidebar_user_welcome{
+    text-transform: capitalize;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    perspective: 1500px;
+}
+
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #000;
+    color: #fff;
+    transition: all 0.3s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+    transform-origin: bottom left;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+    transform: rotateY(100deg);
+}
+
+#sidebar .sidebar-header {
+    padding: 10px;
+    background: #000;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #ff6600;
+    background: #fff;
+}
+
+#sidebar ul.sidebar-ul-only li.active > a, a.sidebar-ul-only[aria-expanded="true"] {
+    color: #fff;
+    background: #ff6600;
+}
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 1.1em !important;
+    padding-left: 30px !important;
+    background: #000000;
+    color: #ff6600;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article, a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+.initial-span{
+    border:1px ridge #dedede;
+    border-radius: 50%;
+    padding:2px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: #ddd;
+    font-weight: 600;
+}
+
+#content {
+    width: 100%;
+    padding: 5px 0px 20px 0px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    background: linear-gradient(to right bottom, #ff66005a, #0000002a, #66ff005a);
+}
+
+#sidebarCollapse {
+    width: 40px;
+    height: 40px;
+    background: #f5f5f5;
+    cursor: pointer;
+}
+
+#sidebarCollapse span {
+    width: 80%;
+    height: 5px;
+    margin: 0 auto;
+    display: block;
+    background: #555;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+    transition-delay: 0.2s;
+}
+
+#sidebarCollapse span:first-of-type {
+    transform: rotate(-39deg) translate(2px, 1px);
+    /*opacity: 0;*/
+}
+#sidebarCollapse span:nth-of-type(2) {
+    /*opacity: 1;*/
+    /*height: 5px;*/
+    opacity: 0;
+}
+#sidebarCollapse span:last-of-type {
+    transform: rotate(45deg) translate(1px, -1px);
+    /*opacity: 0;*/
+}
+
+
+#sidebarCollapse.active span {
+    transform: none;
+    opacity: 1;
+    margin: 5px auto;
+}
+#sidebar_admin_image{
+    width: 50%;
+}
+
+#navbarSupportedContent .navbar-nav{
+    margin-top: 20px;
+}
+
+.messages_image{
+    width: 18%;
+    margin-top: 0.3rem;
+}
+
+#search_para
+{
+ color:grey;
+}
+.highlight
+{
+ color:blue;
+ background-color: #ff0;
+ /*text-decoration:underline;*/
+ font-size: 20px;
+ font-stretch: extra-expanded;
+}
+.dt-buttons{
+    
+    width: 50%;
+    float: left;
+}
+.dt-buttons .btn-secondary{
+    background-color: #f30 !important;
+}
+
+/*===== Inner Pages =====*/
+
+/*Data Tables*/
+#myTable tr:nth-child(odd){
+    background-color: #0002;
+}
+
+#myTable, #myTable td, #myTable th{
+    border: 3px groove #000;
+    border-collapse: collapse;
+} 
