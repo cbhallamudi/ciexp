@@ -18,21 +18,21 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index($page = 'welcome_message')
+	public function index($pageSlug = 'welcome_message')
 	{
-		if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
+		if ( ! file_exists(APPPATH.'views/'.$pageSlug.'.php'))
        	{
             // Whoops, we don't have a page for that!
             show_404();
        	}
        	$pageTitle = '';		
-		$page_title = explode('_',$page);
+		$page_title = explode('_',$pageSlug);
 		for($i = 0;$i < sizeof($page_title);$i++){
 			$pageTitle .= ucfirst($page_title[$i]).' ';
 		}
 		$data['title'] = rtrim($pageTitle); // Capitalize the first letter
 		$this->load->view('templates/header', $data);
-		$this->load->view($page, $data);
+		$this->load->view($pageSlug, $data);
 		$this->load->view('templates/footer', $data);
 	}
 }

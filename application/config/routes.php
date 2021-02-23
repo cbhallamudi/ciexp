@@ -52,3 +52,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+// admin rediect routes
+
+$route['admin'] = 'adminController/index';
+$route['admin-dashboard'] = 'adminController/adminDashboard';
+$route['admin-homepagesettings'] = 'adminController/adminHomepagesettings';
+$route['admin-aboutpagesettings'] = 'adminController/adminAboutpagesettings';
+$route['admin-productspagesettings'] = 'adminController/adminProductspagesettings';
+$route['admin-contactpagesettings'] = 'adminController/adminContactpagesettings';
+$route['admin-vendors'] = 'adminController/adminVendors';
+$route['admin-customers'] = 'adminController/adminCustomers';
+$route['admin-orders'] = 'adminController/adminOrders';
+$route['admin-products'] = 'adminController/adminProducts';
+$route['admin-userprofile'] = 'adminController/adminUserprofile';
+$route['admin-sitesettings'] = 'adminController/adminSitesettings';
+$route['admin-database-tables'] = 'adminController/adminDatabaseTables';
+
+
+
+// admin functionality routes
+$route['admin-login'] = 'adminController/adminLogin';
+$route['admin-user-basic-info-update'] = 'adminController/adminUserBasicInfoUpdate';
+$route['admin-update-user-password'] = 'adminController/adminUpdateuserpassword';
+$route['admin-update-user-address'] = 'adminController/adminUpdateuseraddress';
+$route['admin-website-basic-info-update'] = 'adminController/adminWebsiteBasicInfoUpdate';
+$route['admin-update-website-address'] = 'adminController/adminUpdatewebsiteaddress';
+$route['admin-logout'] = 'adminController/adminLogout';
+
+
+
+
+
+$route['admin-get-ajax-data/(:any)'] = 'adminController/adminGetajaxdata/$1/';
+$route['admin-get-ajax-data-where/(:any)/(:any)/(:num)'] = 'adminController/adminGetajaxdatawhere/$1/$2/$3';
+$route['admin-get-all-ajax-data-where/(:any)/(:any)/(:num)'] = 'adminController/adminGetallajaxdatawhere/$1/$2/$3';
+$route['admin-check-user-pwd/(:any)'] = 'adminController/adminCheckuserpwd/$1';
+$route['admin-get-user-ajax/(:num)'] = 'adminController/adminGetUserAjax/$1';
+$route['admin-user-action/(:num)/(:num)'] = 'adminController/adminUserAction/$1/$2';
