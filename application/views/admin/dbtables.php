@@ -9,20 +9,7 @@
 		        	    	    <li class="breadcrumb-item active" aria-current="page">Orders</li>
 		        	    	  </ol>
 	        	    		</nav>
-
-	        	    		<?php
-	        	    		// echo "<pre>";
-	        	    		// foreach ($tables as $table)
-	        	    		// {
-	        	    		//         print_r($table);
-	        	    		// }
-
-	        	    		// exit;
-	        	    		?>
-
 	        	    		<div class="table-responsive">
-	        	    			
-	        	    		
 		        	    	<table class="table table-bordered table-striped" id="myTable">
 		        	    	    <thead class="thead-dark">
 		        	    	      <tr>
