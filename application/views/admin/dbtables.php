@@ -1,5 +1,6 @@
 
-	        	<div class="container-fluid p-0">
+	        	<div class="container-fluid p-0 position-relative">
+	        
 	        	    <div class="row mt-1 py-1" style="background-color: transparent;">
 
 	        	    	<div class="col-md-12">
@@ -7,28 +8,17 @@
 	        	    		  <ol class="breadcrumb">
 		        	    	    <li class="breadcrumb-item"><a href="<?php echo base_url('admin-dashboard') ?>">Dashboard</a></li>
 		        	    	    <li class="breadcrumb-item active" aria-current="page">Orders</li>
-		        	    	  </ol>
-	        	    		</nav>
-
-	        	    		<?php
-	        	    		// echo "<pre>";
-	        	    		// foreach ($tables as $table)
-	        	    		// {
-	        	    		//         print_r($table);
-	        	    		// }
-
-	        	    		// exit;
-	        	    		?>
-
-	        	    		<div class="table-responsive">
 	        	    			
-	        	    		
+		        	    	  </ol>
+
+	        	    		</nav>
+	        	    		<div class="table-responsive">
 		        	    	<table class="table table-bordered table-striped" id="myTable">
 		        	    	    <thead class="thead-dark">
 		        	    	      <tr>
-		        	    	        <th class="col-md-2">Table Name</th>
-		        	    	        <th class="col-md-9">Fields</th>
-		        	    	        <th class="col-md-1">Action</th>
+		        	    	        <th class="col-1">Table Name</th>
+		        	    	        <th class="col-9">Fields</th>
+		        	    	        <th class="col-2">Action</th>
 		        	    	      </tr>
 		        	    	    </thead>
 		        	    	    <tbody>
@@ -38,15 +28,15 @@
 		        	    	    {
 		        	    	    ?>	
 		        	    	    	<tr>
-		        	    	    	  <td class="col-md-1"><?php print_r($table);?></td>
-		        	    	    	  <td class="col-md-9"><?php 
+		        	    	    	  <td class="col-1"><?php print_r($table);?></td>
+		        	    	    	  <td class="col-9"><?php 
 		        	    	    	  foreach ($value as $val) { ?>
 		        	    	    	  	<span class="badge badge-pill badge-success d-inline-block p-2">
 		        	    	    	  	<?php echo $val->name; ?>
 		        	    	    	  	</span>
 		        	    	    	  <?php }
 		        	    	    	  ?></td>
-		        	    	    	  <td class="col-md-2">
+		        	    	    	  <td class="col-2">
 		        	    	    	  	<button title="View Product Details" class="btn btn-info"><i class="fa fa-eye text-dark"></i></button><button title="Edit Product" class="btn btn-warning ml-1"><i class="fa fa-edit text-dark"></i></button><button title="Delete Product" class="btn btn-danger ml-1"><i class="fa fa-trash text-dark"></i></button>
 		        	    	    	  </td>
 		        	    	    	</tr>
@@ -59,7 +49,7 @@
 	        	</div>    
 
 
-
+	        	
 
 	
 
@@ -75,7 +65,13 @@
 	        var dataTab = $('#myTable').DataTable({
 	        	dom: 'Bfrtip',
 			    buttons: [
-			        'copy', 'csv', 'pdf', 'print'
+			        'copy', 'csv', 'pdf', 'print',
+			        {
+                        text: '<i class="fa fa-plus"></i> Add New Table',
+                        action: function () {
+                            $('#addNewTable').modal('show');
+                        }
+                    }
 			    ],
 			    sPaginationType: "full_numbers"
 			});
