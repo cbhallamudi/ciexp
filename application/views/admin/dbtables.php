@@ -1,5 +1,6 @@
 
-	        	<div class="container-fluid p-0">
+	        	<div class="container-fluid p-0 position-relative">
+	        
 	        	    <div class="row mt-1 py-1" style="background-color: transparent;">
 
 	        	    	<div class="col-md-12">
@@ -7,7 +8,9 @@
 	        	    		  <ol class="breadcrumb">
 		        	    	    <li class="breadcrumb-item"><a href="<?php echo base_url('admin-dashboard') ?>">Dashboard</a></li>
 		        	    	    <li class="breadcrumb-item active" aria-current="page">Orders</li>
+	        	    			
 		        	    	  </ol>
+
 	        	    		</nav>
 	        	    		<div class="table-responsive">
 		        	    	<table class="table table-bordered table-striped" id="myTable">
@@ -46,7 +49,7 @@
 	        	</div>    
 
 
-
+	        	
 
 	
 
@@ -62,7 +65,13 @@
 	        var dataTab = $('#myTable').DataTable({
 	        	dom: 'Bfrtip',
 			    buttons: [
-			        'copy', 'csv', 'pdf', 'print'
+			        'copy', 'csv', 'pdf', 'print',
+			        {
+                        text: '<i class="fa fa-plus"></i> Add New Table',
+                        action: function () {
+                            $('#addNewTable').modal('show');
+                        }
+                    }
 			    ],
 			    sPaginationType: "full_numbers"
 			});
