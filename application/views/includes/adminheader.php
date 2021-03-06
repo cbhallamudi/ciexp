@@ -73,9 +73,9 @@
 	            <img src="<?php echo base_url('adminAssets/') ?>images/avengers.jpg" class="mx-auto d-block img-fluid rounded-circle" id="sidebar_admin_image"> 
 	        </div>
 	        <ul class="list-unstyled components sidebar-ul-only">
-	            <li class="<?php if($this->uri->segment(1)=='admin-table-create'){echo 'active';} ?>">
+	            <?php /* ?><li class="<?php if($this->uri->segment(1)=='admin-table-create'){echo 'active';} ?>">
 	                <a href="<?php echo base_url('admin-database-tables');?>">Tables</a>
-	            </li>
+	            </li><?php */ ?>
 	            <li class="<?php if($this->uri->segment(1)=='admin-dashboard'){echo 'active';} ?>">
 	                <a href="<?php echo base_url('admin-dashboard');?>">Dashboard</a>
 	            </li>
