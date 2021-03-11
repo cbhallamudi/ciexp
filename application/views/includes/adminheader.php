@@ -175,7 +175,7 @@
 	                        	  </a>
 	                        	  <div class="dropdown-menu bg-secondary">
 	                        	    <?php 
-	                        	    	$messagesRandomColors = ['#d21515','green','#2ddb27'];
+	                        	    	$messagesRandomColors = ['#d21515','#F807F5','#2ddb27'];
 	                        	    	for($message=0; $message < 3; $message++) { 
 	                        	    		if(array_key_exists($message, $messages)){ ?>
 	                        	    		    
@@ -187,7 +187,7 @@
 	                        	    ?>
 	                        	    <?php } ?>	
 	                        	  	<div class="dropdown-divider"></div> 
-	                        	    <a class="dropdown-item text-light" href="<?php echo base_url('admin-logout'); ?>"><span class="fa fa-eye"></span> View Messages</a>
+	                        	    <a class="dropdown-item text-light" href="<?php echo base_url('admin-messages-table'); ?>"><span class="fa fa-eye"></span> View Messages</a>
 	                        	  </div>
 
 	                        	</div> 
