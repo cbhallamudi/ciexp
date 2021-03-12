@@ -52,12 +52,24 @@ class Welcome extends CI_Controller {
 			}
 			
 			$fields = array(
-
+		        $postVar['field1'][0] => 
 		        	array(
 		                'type' => $postVar['field1'][1],
 		                'constraint' => $postVar['field1'][2],
 		                'auto_increment' => $auto_increment
+		        	)
+		    );
+		    
+		    echo "<pre>";
+		    for($i = 2;$i < sizeof($postVar); $i++){
+		    	print_r($postVar['field'.$i]);		
+		    }
+		    exit;   
 
+			$this->load->dbforge();
+			$this->dbforge->add_field($fields);
+			$this->dbforge->add_key('id', TRUE);
+			$this->dbforge->create_table($postVar['table_name'],TRUE);
 		}else{
 			// echo "without dbforge";exit;
 			$fields = array(
@@ -68,7 +80,6 @@ class Welcome extends CI_Controller {
 			$this->load->dbforge();
 			$this->dbforge->add_field($fields);
 			$this->dbforge->create_table($postVar['table_name'],TRUE);
-
 		}
 
 	}

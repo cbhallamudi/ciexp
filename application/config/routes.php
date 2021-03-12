@@ -70,7 +70,6 @@ $route['admin-products'] = 'adminController/adminProducts';
 $route['admin-userprofile'] = 'adminController/adminUserprofile';
 $route['admin-sitesettings'] = 'adminController/adminSitesettings';
 $route['admin-database-tables'] = 'adminController/adminDatabaseTables';
-$route['admin-messages-table'] = 'adminController/adminMessagesTable';
 
 
 
