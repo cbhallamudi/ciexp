@@ -48,8 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script type="text/javascript">
 	$("#addColumnBtn").click(function(){
-		var presentFieldCount = $(".field-row").length+1;
-		$("#row-container").append('<div class="field-row form-row border border-secondary rounded p-1 mt-1"><div class="form-group col-md-3"><label>Field Name</label><input type="text" class="form-control" name="field'+presentFieldCount+'[]" placeholder="Field Name"></div><div class="form-group col-md-3"><label for="inputState">Data Type</label><input type="text" class="form-control" name="field'+presentFieldCount+'[]" placeholder="Data Type"></div><div class="form-group col-md-1"><label>Length</label><input type="text" class="form-control" placeholder="Length" name="field'+presentFieldCount+'[]"></div><div class="form-group col-md-3"><label>Default Value</label><input type="text" class="form-control" placeholder="Custom or NULL" name="field'+presentFieldCount+'[]"></div><div class="form-group col-md-2"><label>Remove Field</label><button type="button" class="btn-danger fa fa-minus form-control" onclick="remRow('+presentFieldCount+')"></button></div></div>');
+
 	});
 
 	function remRow(fieldRowId) {
