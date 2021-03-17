@@ -11,7 +11,7 @@
 		        	    	</nav>
 	        	    	</div>
 
-	        	    	<div class="col-md-12 p-3" style="background-color:rgba(255, 255, 255, 0.5)">
+	        	    	<div class="col-md-4 p-3" style="background-color:rgba(255, 255, 255, 0.5)">
 	        	    	
 	        	    			<form action="">
 	        	    				<div class="form-group">
@@ -30,6 +30,59 @@
 	        	    				<div class="form-group">
 	        	    					<label for="sectionDescription">Section Description</label>
 	        	    					<textarea id="summernote" name="sectionDescription" rows="10"></textarea>
+	        	    				</div>
+	        	    				<div class="form-group">
+	        	    					<input type="submit" value="submit" class="btn btn-warning form-control">
+	        	    				</div>
+	        	    			</form>
+	        	    	</div>
+	        	    	<div class="col-md-4 p-3" style="background-color:rgba(255, 255, 255, 0.5)">
+	        	    	
+	        	    			<form action="">
+	        	    				<div class="form-group">
+	        	    					<label for="section-title-1">
+	        	    						Section Title
+	        	    					</label>
+	        	    					<input class="form-control" type="text" id="section-title-1" name="section-title-1">
+	        	    				</div>
+	        	    				<div class="form-group">
+	        	    					<label for="section-image">Section Image</label>
+	        	    					<div class="custom-file">
+	        	    					    <input type="file" class="custom-file-input" id="customFile">
+	        	    					    <label class="custom-file-label" for="customFile">Choose file</label>
+	        	    					  </div>
+	        	    				</div>
+	        	    				<div class="form-group">
+	        	    					<label for="sectionDescription">Section Description</label>
+	        	    					<textarea id="summernote1" name="sectionDescription" rows="10"></textarea>
+	        	    				</div>
+	        	    				<div class="form-group">
+	        	    					<input type="submit" value="submit" class="btn btn-warning form-control">
+	        	    				</div>
+	        	    			</form>
+	        	    	</div>
+	        	    	<div class="col-md-4 p-3" style="background-color:rgba(255, 255, 255, 0.5)">
+	        	    	
+	        	    			<form action="">
+	        	    				<div class="form-group">
+	        	    					<label for="section-title-1">
+	        	    						Section Title
+	        	    					</label>
+	        	    					<input class="form-control" type="text" id="section-title-1" name="section-title-1">
+	        	    				</div>
+	        	    				<div class="form-group">
+	        	    					<label for="section-image">Section Image</label>
+	        	    					<div class="custom-file">
+	        	    					    <input type="file" class="custom-file-input" id="customFile">
+	        	    					    <label class="custom-file-label" for="customFile">Choose file</label>
+	        	    					  </div>
+	        	    				</div>
+	        	    				<div class="form-group">
+	        	    					<label for="sectionDescription">Section Description</label>
+	        	    					<textarea id="summernote2" name="sectionDescription" rows="10"></textarea>
+	        	    				</div>
+	        	    				<div class="form-group">
+	        	    					<input type="submit" value="submit" class="btn btn-warning form-control">
 	        	    				</div>
 	        	    			</form>
 	        	    	</div>
@@ -66,15 +119,24 @@
 
 	        	</script>
 	        	<script>
-	        	 $(document).ready(function() {
+	        	$(document).ready(function() {
 	        	   var t = $('#summernote').summernote(
-	        	   {
-	        	   height: 300,
-	        	   focus: true
-	        	 }
-	        	   );
-	        	   $("#btn").click(function(){
-	        	     $('div.note-editable').height(150);
-	        	   });
-	        	 });
-	        	  </script>	
+	        	   	{
+	        	   		height: 150,
+	        	   		dialogsInBody: true
+	        	 	});
+	        	   var t1 = $('#summernote1').summernote(
+	        	   	{
+	        	   		height: 150,
+	        	   		dialogsInBody: true
+	        	 	});
+	        	   var t2 = $('#summernote2').summernote(
+	        	   	{
+	        	   		height: 150,
+	        	   		dialogsInBody: true
+	        	 	});
+        	  		$("#btn").click(function(){
+        	     		$('div.note-editable').height(150);
+					});
+	        	});
+	        	</script>	

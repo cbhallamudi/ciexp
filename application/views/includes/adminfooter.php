@@ -98,7 +98,7 @@
 	  <div class="modal-dialog modal-dialog-scrollable modal-lg">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title text-uppercase mx-auto" id="exampleModalLabel">Sure want to <span id="exampleModalLabelTitle"></span> User</h5>
+	        <h5 class="modal-title text-uppercase mx-auto" id="exampleModalLabel">Sure want to <span id="exampleModalLabelTitle">Edit</span> User</h5>
 	      </div>
 	      <div class="modal-body">
 		    <div class="row">
@@ -119,32 +119,62 @@
 	  </div>
 	</div>
 
-	<!-- Add New Table Modal -->
-	<div class="modal fade" id="addNewTable" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	        
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+
+<!-- Notification Modal Starts -->
+	<!-- <button type="button" class="btn trigger" data-toggle="modal" data-target="#notificationModal"> OFFER </button> -->
+	   <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	     <div class="modal-dialog" role="document">
+	       <div class="modal-content">
+	         <div class="modal-body text-center">
+	           <div class="icon text-danger">
+	             <i class="fa fa-gift"></i>
+	           </div>
+	           <div class="notice">
+	             <h4>Get 50% Discount</h4>
+	             <p>For the next 24 hours you can get any product at half-price.</p>
+	             
+	             <p>Use promo code <span class="badge badge-info">50-OFF</span> at checkout.</p>
+	           </div>
+	           <div class="code"></div>
+	         </div>
+	         <div class="modal-footer d-flex justify-content-between">
+	           <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
+	           <button type="button" class="btn btn-danger">Get Code</button>
+	         </div>
+	       </div>
+	     </div>
+	   </div>
+	<!-- Notification Modal Ends -->
 
 	<script type="text/javascript">
+
+		var pageUri = "<?php echo $this->uri->segment(1); ?>";
+		
+		if(pageUri == "admin-homepagesettings" || pageUri == "admin-aboutpagesettings"  || pageUri == "admin-productspagesettings" || pageUri == "admin-contactpagesettings" || pageUri == "admin-footerpagesettings" || pageUri == "admin-headerpagesettings"){
+			$('#pageSubmenu').show();
+		}else{
+			$('#pageSubmenu').hide();
+		}
+
+		$("#pageSettingsDropdown").click(function(){
+			$('#pageSubmenu').toggle();
+		});
+		
+		if(pageUri == "admin-vendors" || pageUri == "admin-customers"){
+			$('#homeSubmenu').show();
+		}else{
+			$('#homeSubmenu').hide();
+		}
+
+		$("#userSettingsDropdown").click(function(){
+			$('#homeSubmenu').toggle();
+		});
+
 		$(document).ready(function() {
 		    $('#example').dataTable( {
 		        "sPaginationType": "full_numbers"
 		    } );
+			
 		} );
 		$(".alert-dismissible").fadeOut(5000);
 
@@ -186,6 +216,19 @@
 				$('#exampleModalLabelTitle').append(action);
 				$('#adminuseractionbtn').attr('href','<?php echo base_url('admin-user-action/2/') ?>'+userId).html('Delete');
 			}		
+		}
+
+		function showNotification(notId) {
+			var getNotification = new XMLHttpRequest;
+			getNotification.open('GET','<?php echo base_url("getNotification/"); ?>'+notId);
+			getNotification.onreadystatechange= function(){
+				if(this.readyState == 4 && this.status == 200){
+					console.log(JSON.parse(this.responseText));
+					$('#notificationModal').modal('show');
+				}				
+			};
+			getNotification.send();
+
 		}
 
 	</script>

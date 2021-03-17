@@ -413,7 +413,3 @@ a.article, a.article:hover {
     border: 3px groove #000;
     border-collapse: collapse;
 } 
-
-.add-btn-custom{
-    background-color: #17a738 !important;
-}

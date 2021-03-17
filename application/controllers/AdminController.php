@@ -27,9 +27,8 @@ class AdminController extends CI_Controller
 			$this->session->set_flashdata('failure','Please Login');
 			redirect('admin');
 		}
-		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['messages'] = $this->Main_model->getAllDataWhereMore('messages',array('messagetoemail'=>$data['userDetails']->useremail));
+		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
 		$data['notifications'] = $this->Main_model->getAllData('notifications');
 		// $data['countUsers'] = $this->User_model->getRecordCountWhere('users',array('userstatus'=>'active','userrole!='=>));
 		// $data['countOrders'] = $this->User_model->getRecordCountWhere($table,$where);
@@ -45,11 +44,37 @@ class AdminController extends CI_Controller
 			redirect('admin');
 		}
 		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['messages'] = $this->Main_model->getAllDataWhereMore('messages',array('messagetoemail'=>$data['userDetails']->useremail));
+			userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
 		$data['notifications'] = $this->Main_model->getAllData('notifications');
 		$this->load->view('includes/adminheader',$data);
 		$this->load->view('admin/homepagesettings');
+		$this->load->view('includes/adminfooter');
+	}
+	public function adminheaderpagesettings(){
+		if($this->session->userdata('usersid')==""){
+			$this->session->set_flashdata('failure','Please Login');
+			redirect('admin');
+		}
+		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
+			userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
+		$data['notifications'] = $this->Main_model->getAllData('notifications');
+		$this->load->view('includes/adminheader',$data);
+		$this->load->view('admin/headerpagesettings');
+		$this->load->view('includes/adminfooter');
+	}
+	public function adminfooterpagesettings(){
+		if($this->session->userdata('usersid')==""){
+			$this->session->set_flashdata('failure','Please Login');
+			redirect('admin');
+		}
+		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
+			userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
+		$data['notifications'] = $this->Main_model->getAllData('notifications');
+		$this->load->view('includes/adminheader',$data);
+		$this->load->view('admin/footerpagesettings');
 		$this->load->view('includes/adminfooter');
 	}
 	public function adminAboutpagesettings(){
@@ -58,8 +83,8 @@ class AdminController extends CI_Controller
 			redirect('admin');
 		}
 		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['messages'] = $this->Main_model->getAllDataWhereMore('messages',array('messagetoemail'=>$data['userDetails']->useremail));
+			userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
 		$data['notifications'] = $this->Main_model->getAllData('notifications');
 		$this->load->view('includes/adminheader',$data);
 		$this->load->view('admin/aboutpagesettings');
@@ -71,8 +96,8 @@ class AdminController extends CI_Controller
 			redirect('admin');
 		}
 		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['messages'] = $this->Main_model->getAllDataWhereMore('messages',array('messagetoemail'=>$data['userDetails']->useremail));
+			userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
 		$data['notifications'] = $this->Main_model->getAllData('notifications');
 		$this->load->view('includes/adminheader',$data);
 		$this->load->view('admin/productspagesettings');
@@ -84,26 +109,12 @@ class AdminController extends CI_Controller
 			redirect('admin');
 		}
 		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['messages'] = $this->Main_model->getAllDataWhereMore('messages',array('messagetoemail'=>$data['userDetails']->useremail));
+			userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
 		$data['notifications'] = $this->Main_model->getAllData('notifications');
 		$this->load->view('includes/adminheader',$data);
 		$this->load->view('admin/contactpagesettings');
 		$this->load->view('includes/adminfooter');
-	}
-	public function adminMessagesTable(){
-		if($this->session->userdata('usersid')==""){
-			$this->session->set_flashdata('failure','Please Login');
-			redirect('admin');
-		}
-		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['messages'] = $this->Main_model->getAllDataWhereMore('messages',array('messagetoemail'=>$data['userDetails']->useremail));
-		$data['notifications'] = $this->Main_model->getAllData('notifications');
-		$data['vendors'] = $this->Main_model->getDataColumnWhereMore('users',array('userrole'=>'owner'),array('userid','userfname','userlname','useremail','userstatus'));
-		$this->load->view('includes/adminheader',$data);
-		$this->load->view('admin/messages',$data);
-		$this->load->view('includes/adminfooter',$data);
 	}
 	public function adminVendors(){
 		if($this->session->userdata('usersid')==""){
@@ -111,8 +122,8 @@ class AdminController extends CI_Controller
 			redirect('admin');
 		}
 		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['messages'] = $this->Main_model->getAllDataWhereMore('messages',array('messagetoemail'=>$data['userDetails']->useremail));
+			userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
 		$data['notifications'] = $this->Main_model->getAllData('notifications');
 		$data['vendors'] = $this->Main_model->getDataColumnWhereMore('users',array('userrole'=>'owner'),array('userid','userfname','userlname','useremail','userstatus'));
 		$this->load->view('includes/adminheader',$data);
@@ -125,8 +136,8 @@ class AdminController extends CI_Controller
 			redirect('admin');
 		}
 		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['messages'] = $this->Main_model->getAllDataWhereMore('messages',array('messagetoemail'=>$data['userDetails']->useremail));
+			userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
 		$data['notifications'] = $this->Main_model->getAllData('notifications');
 		$data['customers'] = $this->Main_model->getDataColumnWhereMore('users',array('userrole'=>'customer'),array('userid','userfname','userlname','useremail','userstatus'));
 		$this->load->view('includes/adminheader',$data);
@@ -139,8 +150,8 @@ class AdminController extends CI_Controller
 			redirect('admin');
 		}
 		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['messages'] = $this->Main_model->getAllDataWhereMore('messages',array('messagetoemail'=>$data['userDetails']->useremail));
+			userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
 		$data['notifications'] = $this->Main_model->getAllData('notifications');
 		$this->load->view('includes/adminheader',$data);
 		$this->load->view('admin/orders');
@@ -152,8 +163,8 @@ class AdminController extends CI_Controller
 			redirect('admin');
 		}
 		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['messages'] = $this->Main_model->getAllDataWhereMore('messages',array('messagetoemail'=>$data['userDetails']->useremail));
+			userdata('usersid')),'useruname');
+		$data['messages'] = $this->Main_model->getAllData('messages');
 		$data['notifications'] = $this->Main_model->getAllData('notifications');
 		$this->load->view('includes/adminheader',$data);
 		$this->load->view('admin/products',$data);
@@ -183,33 +194,6 @@ class AdminController extends CI_Controller
 		$data['siteDetails'] = $this->Main_model->getAllData('sitesettings',array('sitename','sitelogo','siteurl','siteicon','siteaddress','sitecontact','siteemail' ));
 		$data['countries'] = $this->Main_model->getAllData('countries');
 		$this->load->view('admin/sitesettings',$data);
-		
-	}
-	public function adminDatabaseTables(){
-		if($this->session->userdata('usersid')==""){
-			$this->session->set_flashdata('failure','Please Login');
-			redirect('admin');
-		}
-		$tables = $this->db->list_tables();
-
-		foreach ($tables as $table)
-		{
-		    $fields[$table] = $this->db->field_data($table);
-		}
-
-		// echo "<pre>";
-		// print_r($fields);
-		// exit;
-
-		$data['userDetails'] = $this->Main_model->getDataColumnWhere('users',array('userid'=>$this->session->
-			userdata('usersid')),array('useruname','useremail'));
-		$data['siteDetails'] = $this->Main_model->getAllData('sitesettings',array('sitename','sitelogo','siteurl','siteicon','siteaddress','sitecontact','siteemail' ));
-
-		$data['tables'] = $fields;
-		
-		$this->load->view('includes/adminheader',$data);
-		$this->load->view('admin/dbtables',$data);
-		$this->load->view('includes/adminfooter',$data);
 		
 	}
 
@@ -493,6 +477,13 @@ class AdminController extends CI_Controller
 		$userDetails = $this->Main_model->getDataColumnWhere('users',array('userid'=>$userId),array('userid','useruname','usercontact','useraddress','userprofilepic','userfname','userlname','useremail','usercountry','userstate','usercity','userpincode','userprofilepic'));
 		echo json_encode($userDetails);
 	}
+
+	public function getNotification($notId)
+	{
+		$notification = $this->Main_model->getAllDataWhere('notifications',array('notificationid'=>$notId));
+		echo json_encode($notification);
+	}
+	
 	public function adminUserAction($action,$userId)
 	{
 		$redirectBack = $_SERVER['HTTP_REFERER'];

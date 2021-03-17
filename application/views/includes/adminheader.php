@@ -23,6 +23,9 @@
 	<script type="text/javascript" src="<?php echo base_url('adminAssets/') ?>js/popper.js"></script>
 	<script type="text/javascript" src="<?php echo base_url('adminAssets/') ?>js/bs.js"></script>
 	
+	<!-- Validation JS -->
+
+	<script type="text/javascript" src="<?php echo base_url('validationRules/dist/jquery.validate.js') ?>"></script>
 
 	<!-- dashboard Plugins -->
 	<script type="text/javascript" src="<?php echo base_url('adminAssets/') ?>js/chartDist/Chart.js"></script>
@@ -73,58 +76,60 @@
 	            <img src="<?php echo base_url('adminAssets/') ?>images/avengers.jpg" class="mx-auto d-block img-fluid rounded-circle" id="sidebar_admin_image"> 
 	        </div>
 	        <ul class="list-unstyled components sidebar-ul-only">
-	            <?php /* ?><li class="<?php if($this->uri->segment(1)=='admin-table-create'){echo 'active';} ?>">
-	                <a href="<?php echo base_url('admin-database-tables');?>">Tables</a>
-	            </li><?php */ ?>
-	            <li class="<?php if($this->uri->segment(1)=='admin-dashboard'){echo 'active';} ?>">
+	            <li class="<?php if($this->uri->segment(1) == 'admin-dashboard'){echo 'active';} ?>">
 	                <a href="<?php echo base_url('admin-dashboard');?>">Dashboard</a>
 	            </li>
 	            <li>
-	                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle sidebar-ul-only">Page Settings</a>
+	                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle sidebar-ul-only" id="pageSettingsDropdown">Page Settings</a>
 	                <ul class="collapse list-unstyled" id="pageSubmenu">
-	                    <!-- <li>
+	                    <li class="<?php if($this->uri->segment(1) == 'admin-homepagesettings'){echo 'active';} ?>">
 	                        <a href="<?php echo base_url('admin-homepagesettings');?>">Home Page</a>
 	                    </li>
-	                    <li>
+	                    <li class="<?php if($this->uri->segment(1) == 'admin-headerpagesettings'){echo 'active';} ?>">
+	                        <a href="<?php echo base_url('admin-headerpagesettings');?>">Header Page</a>
+	                    </li>
+	                    <li class="<?php if($this->uri->segment(1) == 'admin-footerpagesettings'){echo 'active';} ?>">
+	                        <a href="<?php echo base_url('admin-footerpagesettings');?>">Footer Page</a>
+	                    </li>
+	                    <?php /* ?><li class="<?php if($this->uri->segment(1) == 'admin-aboutpagesettings'){echo 'active';} ?>">
 	                        <a href="<?php echo base_url('admin-aboutpagesettings');?>">About Page</a>
 	                    </li>
-	                    <li>
+	                    <li class="<?php if($this->uri->segment(1) == 'admin-productspagesettings'){echo 'active';} ?>">
 	                        <a href="<?php echo base_url('admin-productspagesettings');?>">Products Page</a>
 	                    </li>
-	                    <li>
+	                    <li class="<?php if($this->uri->segment(1) == 'admin-contactpagesettings'){echo 'active';} ?>">
 	                        <a href="<?php echo base_url('admin-contactpagesettings');?>">Contact Page</a>
-	                    </li> -->
+	                    </li> <?php */ ?>
 	             
 	                </ul>
 	            </li>
 	            <li class="">
 		            <?php if($this->session->userdata('usersuserrole') == 'admin'){ ?>
-		                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle sidebar-ul-only">Users</a>
+		                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle sidebar-ul-only" id="userSettingsDropdown">Users</a>
 		                <ul class="collapse list-unstyled" id="homeSubmenu">
 
-			                    <li>
+			                    <li class="<?php if($this->uri->segment(1) == 'admin-vendors'){echo 'active';} ?>">
 			                        <a href="<?php echo base_url('admin-vendors');?>">Vendors</a>
 			                    </li>
-		                    <li>
+		                    <li class="<?php if($this->uri->segment(1) == 'admin-customers'){echo 'active';} ?>">
 		                        <a href="<?php echo base_url('admin-customers');?>">Customers</a>
 		                    </li>
 		             
 		                </ul>
 	                <?php }else{ ?>
 
-	                    <li>
+	                    <li class="<?php if($this->uri->segment(1) == 'admin-customers'){echo 'active';} ?>">
 	                        <a href="<?php echo base_url('admin-customers');?>">Customers</a>
 	                    </li>
 	                <?php } ?> 
 	            </li>
-	            <li class="">
+	            <li class="<?php if($this->uri->segment(1) == 'admin-orders'){echo 'active';} ?>">
 	                <a href="<?php echo base_url('admin-orders');?>">Orders</a>
 	            </li>
 
-	            <li class="">
+	            <li class="<?php if($this->uri->segment(1) == 'admin-products'){echo 'active';} ?>">
 	                <a href="<?php echo base_url('admin-products');?>">Products</a>
 	            </li>
-	            
 	            <!-- <li>
 	                <a href="#">Products</a>
 	            </li> -->
@@ -156,10 +161,10 @@
 	                        	    	for($notification=0; $notification < 3; $notification++) { 
 	                        	    		if(array_key_exists($notification, $notifications)){ ?>
 	                        	    		    
-	                        	    			<a class="dropdown-item <?php if($notifications[$notification]->notificationtype=='newuser'){echo 'text-success';}else{echo 'text-danger';} ?> py-1 px-2" href="<?php echo base_url('admin-userprofile'); ?>"> <?php echo $notifications[$notification]->notificationsubject; ?> </a>
+	                        	    			<button class="dropdown-item <?php if($notifications[$notification]->notificationtype=='newuser'){echo 'text-success';}else if($notifications[$notification]->notificationtype=='nolongeruser'){echo 'text-danger';}else {echo 'text-primary';} ?> py-1 px-2" href="<?php echo base_url('admin-userprofile'); ?>" onclick="showNotification('<?php echo $notifications[$notification]->notificationid; ?>')"> <?php echo $notifications[$notification]->notificationsubject; ?> </button>
 	                        	    		    
 	                        	    	<?php } else{ ?>
-	                        	    		    <a class="dropdown-item text-dark py-1 px-2" href="#">No New Messages</a>
+	                        	    		    <button class="dropdown-item text-dark py-1 px-2" href="#">No New Messages</button>
 	                        	    	<?php }
 	                        	    ?>
 	                        	    <?php } ?>	
@@ -175,7 +180,7 @@
 	                        	  </a>
 	                        	  <div class="dropdown-menu bg-secondary">
 	                        	    <?php 
-	                        	    	$messagesRandomColors = ['#d21515','#F807F5','#2ddb27'];
+	                        	    	$messagesRandomColors = ['#d21515','green','#2ddb27'];
 	                        	    	for($message=0; $message < 3; $message++) { 
 	                        	    		if(array_key_exists($message, $messages)){ ?>
 	                        	    		    
@@ -187,7 +192,7 @@
 	                        	    ?>
 	                        	    <?php } ?>	
 	                        	  	<div class="dropdown-divider"></div> 
-	                        	    <a class="dropdown-item text-light" href="<?php echo base_url('admin-messages-table'); ?>"><span class="fa fa-eye"></span> View Messages</a>
+	                        	    <a class="dropdown-item text-light" href="<?php echo base_url('admin-logout'); ?>"><span class="fa fa-eye"></span> View Messages</a>
 	                        	  </div>
 
 	                        	</div> 

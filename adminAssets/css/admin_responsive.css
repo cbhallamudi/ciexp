@@ -70,6 +70,7 @@
   }
 }
 
+
 /*==================Admin Sidebar===============*/
 
 @media (max-width: 768px) {
@@ -118,9 +119,4 @@
       padding-right: 1vw;
     }
 
-    #navbarSupportedContent{
-      z-index: +9;
-    }
-
 }
-
