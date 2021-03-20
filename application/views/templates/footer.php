@@ -26,17 +26,17 @@
     	        <ul class="list-inline mb-0">
     	          <li class="list-inline-item mr-3">
     	            <a href="#">
-    	              <i class="fab fa-facebook fa-2x fa-fw"></i>
+    	              <i class="fa fa-facebook fa-2x"></i>
     	            </a>
     	          </li>
     	          <li class="list-inline-item mr-3">
     	            <a href="#">
-    	              <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+    	              <i class="fa fa-twitter-square fa-2x"></i>
     	            </a>
     	          </li>
     	          <li class="list-inline-item">
     	            <a href="#">
-    	              <i class="fab fa-instagram fa-2x fa-fw"></i>
+    	              <i class="fa fa-instagram fa-2x"></i>
     	            </a>
     	          </li>
     	        </ul>
@@ -45,10 +45,47 @@
     	  </div>
     	</footer>
 
+        <a href="#topNavbar" id="topButton" title="To Top"><i class="fa fa-arrow-up fa-2x"></i></a>
+
     	<script type="text/javascript">
     		$("#textAreaForm").click(function(){
     			console.log("submitted");
     		});
+
+            $(window).scroll(function (event) {
+                var scroll = $(window).scrollTop();
+                if(scroll >= 300){
+                    $('#topButton').css('display','block');                    
+                    console.log(scroll);
+                }else{
+                    $('#topButton').css('display','none');                    
+                }
+            });
+
+            $(document).ready(function(){
+              // Add smooth scrolling to all links
+              $("#topButton").on('click', function(event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                  // Prevent default anchor click behavior
+                  event.preventDefault();
+
+                  // Store hash
+                  var hash = this.hash;
+
+                  // Using jQuery's animate() method to add smooth page scroll
+                  // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                  $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                  }, 800, function(){
+               
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                  });
+                } // End if
+              });
+            });
     	</script>
     </body>
 </html>

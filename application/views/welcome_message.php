@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </header>	
  <!-- Icons Grid -->
-  <section class="features-icons bg-light text-center">
+  <section class="features-icons homepageCustomBg1 text-center">
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </section>
 
   <!-- Testimonials -->
-  <section class="testimonials text-center bg-light">
+  <section class="testimonials text-center homepageCustomBg1">
     <div class="container">
       <h2 class="mb-5">What people are saying...</h2>
       <div class="row">

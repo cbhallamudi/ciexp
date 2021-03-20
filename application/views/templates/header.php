@@ -15,114 +15,58 @@
                 <!-- Custom styles for this template -->
                 <link href="css/landing-page.css" rel="stylesheet">
                 <link href="css/website_styles.css" rel="stylesheet">
+                <link href="css/website_responsive_styles.css" rel="stylesheet">
                 
                 <script type="text/javascript" src="<?php echo base_url('adminAssets/') ?>js/jquery.js"></script>
                 <script type="text/javascript" src="<?php echo base_url('adminAssets/') ?>js/popper.js"></script>
                 <script type="text/javascript" src="<?php echo base_url('adminAssets/') ?>js/bs.js"></script>
         </head>
         <body>
+               
+
+                <nav class="circular-menu">
+
+                  <div class="circle">
+                    <a href="" class="fa fa-home fa-2x"></a>
+                    <a href="" class="fa fa-question fa-2x"></a>
+                    <a href="" class="fa fa-cart-arrow-down fa-2x"></a>
+                    <a href="" class="fa fa-phone fa-2x"></a>
+                  </div>
+                  
+                  <a href="" id="togIcon" class="menu-button fa fa-bars"></a>
+
+                </nav>
                <!-- Navigation -->
-               <section class="menu menu--circle">
-                 <input type="checkbox" id="menu__active"/>
-                 <label for="menu__active" class="menu__active">
-                   <div class="menu__toggle">
-                     <div class="icon">
-                       <div class="hamburger"></div>
-                     </div>
-                   </div>
-                   <input type="radio" name="arrow--up" id="degree--up-0"/>
-                   <input type="radio" name="arrow--up" id="degree--up-1" />
-                   <input type="radio" name="arrow--up" id="degree--up-2" />
-                   <div class="menu__listings">
-                     <ul class="circle">
-                       <li>
-                         <div class="placeholder">
-                           <div class="upside">
-                             <a href="https://codepen.io/logrithumn" class="button"><i class="fa fa-user"></i></a>
-                           </div>
-                         </div>
-                       </li>
-                       <li>
-                         <div class="placeholder">
-                           <div class="upside">
-                             <a href="#" class="button"><i class="fa fa-cog"></i></a>
-                           </div>
-                         </div>
-                       </li>
-                       <li>
-                         <div class="placeholder">
-                           <div class="upside">
-                             <a href="#">&nbsp</a>
-                           </div>
-                         </div>
-                       </li>
-                       <li>
-                         <div class="placeholder">
-                           <div class="upside">
-                             <a href="#" class="button"><i class="fa fa-commenting"></i></a>
-                           </div>
-                         </div>
-                       </li>
-                       <li>
-                         <div class="placeholder">
-                           <div class="upside">
-                             <a href="#" class="button"><i class="fa fa-trash"></i></a>
-                           </div>
-                         </div>
-                       </li>
-                       <li>
-                         <div class="placeholder">
-                           <div class="upside">
-                             <a href="#" class="button"><i class="fa fa-battery-4"></i></a>
-                           </div>
-                         </div>
-                       </li>
-                       <li>
-                         <div class="placeholder">
-                           <div class="upside">
-                             <a href="#" class="button"><i class="fa fa-calendar"></i></a>
-                           </div>
-                         </div>
-                       </li>
-                       <li>
-                         <div class="placeholder">
-                           <div class="upside">
-                             <a href="#" class="button"><i class="fa fa-cloud"></i></a>
-                           </div>
-                         </div>
-                       </li>
-                       <li>
-                         <div class="placeholder">
-                           <div class="upside">
-                             <a href="#" class="button"><i class="fa fa-wifi"></i></a>
-                           </div>
-                         </div>
-                       </li>
-                       <li>
-                         <div class="placeholder">
-                           <div class="upside">
-                             <a href="#" class="button"><i class="fa fa-envelope-o"></i></a>
-                           </div>
-                         </div>
-                       </li>
-                     </ul>
-                   </div>
-                   <div class="menu__arrow menu__arrow--top">
-                     <ul>
-                       <li>
-                         <label for="degree--up-0"><div class="arrow"></div></label>
-                         <label for="degree--up-1"><div class="arrow"></div></label>
-                         <label for="degree--up-2"><div class="arrow"></div></label>
-                       </li>
-                     </ul>
-                   </div>
-                 </label>
-               </section>
-               <nav class="navbar navbar-light bg-light static-top">
+               <nav class="navbar navbar-light bg-light static-top" id="topNavbar">
                 
 
                  <div class="container">
-                   <a class="navbar-brand" href="#">Start Bootstrap</a>
+                   <a class="navbar-brand" href="#"><img height="50" src="<?php echo base_url('img/logo.jpg') ?>" alt="CoolBrand"></a>
                    <a class="btn btn-primary" href="#">Sign In</a>
                  </div>
                </nav>
+<script type="text/javascript">
+  
+  var items = document.querySelectorAll('.circle a');
+  var getDist = 5.625*items.length;
+  for(var i = 0, l = items.length; i < l; i++) {
+    // items[i].style.left = (50 - getDist*Math.cos(3.5 - 1*(1/l)*i*Math.PI)) + "%";
+    
+    // items[i].style.top = (50 + getDist*Math.sin(3.5 - 1*(1/l)*i*Math.PI)) + "%";
+    items[i].style.left = (55 - 35*Math.cos(3.4 - 0.95*(1/l)*i*Math.PI)).toFixed(4) + "%";
+    
+    items[i].style.top = (50 + 35*Math.sin(3.4 - 0.95*(1/l)*i*Math.PI)).toFixed(4) + "%";
+  }
+
+
+
+  document.querySelector('.menu-button').onclick = function(e) {
+     e.preventDefault(); document.querySelector('.circle').classList.toggle('open');
+  }
+
+  $("#togIcon").click(function(){
+      $(this).toggleClass('fa-bars');
+      $(this).toggleClass('fa-times');
+  })
+  
+</script>
