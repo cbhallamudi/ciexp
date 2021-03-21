@@ -1,0 +1,19 @@
+
+@media only screen and (max-width: 655px) {
+
+  .navbar-brand{
+  	display: block !important;
+  	width: 100%;
+  	text-align: center;
+  }
+  .navbar .navbar-brand + .btn{
+  	display: block;
+  	width: 25%;
+  	margin: auto;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .navbar .navbar-brand + .btn{
+  	width: 35%;
+  }
+}
